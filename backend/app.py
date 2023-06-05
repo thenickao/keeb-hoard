@@ -1,5 +1,7 @@
 from flask import Flask, jsonify
 
+import models
+
 DEBUG = True
 
 PORT = 8000
@@ -23,4 +25,7 @@ def switch(switch_id):
     return f"this is switch {switch_id}"
 
 if __name__ == '__main__':
+    models.initialize()
     app.run(debug=DEBUG, port=PORT)
+
+    #1:36:49
