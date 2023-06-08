@@ -9,7 +9,14 @@ def users_index():
     result = models.User.select()
     print('results of user select query')
     print(result)
-    return "check your terminal"
+
+    user_dicts = [model_to_dict(user) for user in result]
+    
+    return jsonify({
+        'data': user_dicts,
+        'message': f"Successfully found {len(user_dicts)} users",
+        'status': 200
+    }), 200
 
 @users.route('/', methods=['POST'])
 def create_users():
