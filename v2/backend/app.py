@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from resources.users import users
+from resources.keyboards import keyboards
 import models
 from flask_cors import CORS
 
@@ -7,9 +7,9 @@ DEBUG=True
 PORT=8000
 app = Flask(__name__)
 
-CORS(users, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(keyboards, origins=['http://localhost:3000'], supports_credentials=True)
 
-app.register_blueprint(users, url_prefix='/api/v1/users')
+app.register_blueprint(keyboards, url_prefix='/api/v1/keyboards')
 
 @app.route('/')
 def home():

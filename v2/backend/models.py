@@ -16,6 +16,8 @@ class User(BaseModel):
 class Keyboard(BaseModel):
     keyboard_id = AutoField()
     created_at = DateTimeField(default=datetime.datetime.now)
+    name = CharField()
+    size = CharField()
 
 class Switch(BaseModel):
     switch_id = AutoField()
