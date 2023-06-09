@@ -31,3 +31,13 @@ def create_keyboards():
         status=201
     ), 201
     return "you hit the create route -- check terminal"
+
+@keyboards.route('/<id>', methods=['GET'])
+def get_one_keyboard(id):
+    dog = models.Keyboard.get_by_id(id)
+    print(keyboard)
+    return jsonify(
+        data=model_to_dict(keyboard),
+        message="Success!",
+        status=200
+    ), 200
