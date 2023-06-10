@@ -1,10 +1,12 @@
 import models
 from flask import Blueprint, request, jsonify
 from playhouse.shortcuts import model_to_dict
+# from flask_login import login_required
 
 keyboards = Blueprint('keyboards', 'keyboards')
 
 @keyboards.route('/', methods=['GET'])
+# @login_required
 def keyboards_index():
     result = models.Keyboard.select()
     print('results of keyboard select query')
