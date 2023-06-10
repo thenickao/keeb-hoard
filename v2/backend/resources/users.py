@@ -4,7 +4,7 @@ from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user
 from playhouse.shortcuts import model_to_dict
 
-users = Blueprint('users', __name__, url_prefix='/user')
+users = Blueprint('users', 'users', url_prefix='/users')
 
 @users.route('/register', methods=["POST"])
 def register():

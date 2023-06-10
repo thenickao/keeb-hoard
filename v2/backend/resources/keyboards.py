@@ -24,7 +24,7 @@ def keyboards_index():
 def create_keyboards():
     payload = request.get_json()
     print(payload)
-    new_keyboards = models.Keyboard.create(name=payload['name'], size=payload['size'])
+    new_keyboards = models.Keyboard.create(**payload)
     print(new_keyboards)
     keyboard_dict = model_to_dict(new_keyboards)
     return jsonify(
@@ -44,26 +44,26 @@ def get_one_keyboard(id):
         status=200
     ), 200
 
-@keyboards.route('/<keyboard_id>', methods=['PUT'])
-def update_keyboards(keyboard_id):
+@keyboards.route('/<id>', methods=['PUT'])
+def update_keyboards(id):
     payload = request.get_json()
     print(payload)
 
-    models.Keyboard.update(**payload).where(models.Keyboard.keyboard_id == keyboard_id).execute()
+    models.Keyboard.update(**payload).where(models.Keyboard.id == id).execute()
 
     return jsonify(
-        data=model_to_dict(models.Keyboard.get_by_id(keyboard_id)),
+        data=model_to_dict(models.Keyboard.get_by_id(id)),
         message="resource updated successfully",
         status=200
     ), 200
 
-@keyboards.route('/<keyboard_id>',  methods=['DELETE'])
-def delete_keyboard(keyboard_id):
-    delete_query = models.Keyboard.delete().where(models.Keyboard.keyboard_id == keyboard_id)
+@keyboards.route('/<id>',  methods=['DELETE'])
+def delete_keyboard(id):
+    delete_query = models.Keyboard.delete().where(models.Keyboard.id == id)
     nums_of_rows_deleted = delete_query.execute()
     print(nums_of_rows_deleted)
     return jsonify(
         data={},
-        message=f"Successfully deleted {nums_of_rows_deleted} keyboard with keyboard_id {keyboard_id}",
+        message=f"Successfully deleted {nums_of_rows_deleted} keyboard with id {id}",
         status=200
     ), 200
