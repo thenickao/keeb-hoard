@@ -54,3 +54,14 @@ def update_keyboards(keyboard_id):
         message="resource updated successfully",
         status=200
     ), 200
+
+@keyboards.route('/<keyboard_id>',  methods=['DELETE'])
+def delete_keyboard(keyboard_id):
+    delete_query = models.Keyboard.delete().where(models.Keyboard.keyboard_id == keyboard_id)
+    nums_of_rows_deleted = delete_query.execute()
+    print(nums_of_rows_deleted)
+    return jsonify(
+        data={},
+        message=f"Successfully deleted {nums_of_rows_deleted} keyboard with keyboard_id {keyboard_id}",
+        status=200
+    ), 200
