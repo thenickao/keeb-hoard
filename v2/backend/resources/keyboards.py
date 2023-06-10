@@ -34,10 +34,23 @@ def create_keyboards():
 
 @keyboards.route('/<id>', methods=['GET'])
 def get_one_keyboard(id):
-    dog = models.Keyboard.get_by_id(id)
+    keyboard = models.Keyboard.get_by_id(id)
     print(keyboard)
     return jsonify(
         data=model_to_dict(keyboard),
         message="Success!",
+        status=200
+    ), 200
+
+@keyboards.route('/<keyboard_id>', methods=['PUT'])
+def update_keyboards(keyboard_id):
+    payload = request.get_json()
+    print(payload)
+
+    models.Keyboard.update(**payload).where(models.Keyboard.keyboard_id == keyboard_id).execute()
+
+    return jsonify(
+        data=model_to_dict(models.Keyboard.get_by_id(keyboard_id)),
+        message="resource updated successfully",
         status=200
     ), 200

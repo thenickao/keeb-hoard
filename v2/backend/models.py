@@ -44,3 +44,4 @@ def initialize():
     print('Connected to the DB and created tables if they dont already exist')
     DATABASE.close()
 
+
