@@ -27,5 +27,3 @@ def switch(switch_id):
 if __name__ == '__main__':
     models.initialize()
     app.run(debug=DEBUG, port=PORT)
-
-    #1:36:49
