@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
+import './App.css'
 
-const App = () => {
+function App() {
   
   const [data,setData] = useState([{}])
 
   useEffect(() => {
-    fetch("/keyboards").then(
+    fetch("/<keyboards>").then(
       res => res.json()
     ).then(
       data => {
@@ -16,7 +17,15 @@ const App = () => {
   }, [])
 
   return (
-    <div>
+    <div className="App">
+      
+      <Header />
+      
+      <Routes>
+        <Route path="/" element={<Home/>} />
+      </Routes>
+
+      <Footer />
 
     </div>
   )

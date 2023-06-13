@@ -4,7 +4,7 @@ from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user
 from playhouse.shortcuts import model_to_dict
 
-users = Blueprint('users', 'users', url_prefix='/users')
+users = Blueprint('users', 'users')
 
 @users.route('/register', methods=["POST"])
 def register():
@@ -52,3 +52,18 @@ def logout():
         status=200,
         message= 'successful logout'
     ), 200
+
+@users.route('/', methods=['GET'])
+# @login_required
+def users_index():
+    result = models.User.select()
+    print('results of user select query')
+    print(result)
+
+    user_dicts = [model_to_dict(user) for user in result]
+    
+    return jsonify({
+        'data': user_dicts,
+        'message': f"Successfully found {len(user_dicts)} users",
+        'status': 200
+    }), 200

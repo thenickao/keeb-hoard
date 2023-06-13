@@ -54,15 +54,22 @@ CORS(keycaps, origins=['http://localhost:3000'], supports_credentials=True)
 app.register_blueprint(keycaps, url_prefix='/api/v1/keycaps')
 
 
-@app.route('/')
-def home():
-    return jsonify('Hello, this is home.')
+# @app.route('/')
+# def home():
+#     return jsonify('Hello, this is home.')
 
-@app.route('/<keyboard>')
-def keyboard(keyboard):
-    return f"This is {keyboard}"
+# @app.route('/<keyboard>')
+# def keyboard(keyboard):
+#     return f"This is {keyboard}"
 
+# @app.route('/keyboards')
+# def keyboards():
+#     return {"This is the keyboards test": ["keyboard1", "keyboard2", "keyboard3"]}
 
+# @app.route('/<keyboard>')
+# def keyboard(keyboard):
+#     data = {"message": f"This is {keyboard}"}
+#     return jsonify(data)
 
 
 if __name__ == '__main__':
