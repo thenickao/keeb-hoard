@@ -1,8 +1,25 @@
 import React, {useState, useEffect} from 'react'
-import './App.css';
+import './App.css'
+
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import {Route, Routes} from 'react-router-dom'
+import Home from "./components/Home"
+
+import Keyboards from "./components/pages/Keyboards"
+import Components from "./components/pages/Components"
+import Switches from "./components/pages/Switches"
+import Stabilizers from "./components/pages/Stabilizers"
+import Keycaps from "./components/pages/Keycaps"
+
+import ShowKeyboards from "./components/pages/ShowKeyboards"
+import ShowSwitches from "./components/pages/ShowSwitches"
+import ShowStabilizers from "./components/pages/ShowStabilizers"
+import ShowKeycaps from "./components/pages/ShowKeycaps"
+
+import LogIn from "./components/LogIn"
+import Register from "./components/Register"
+
 
 function App() {
   const [articles, setArticles] = useState([])
@@ -25,7 +42,8 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/keyboards" element={<Keyboards/>} />
+        <Route path="/keyboards" element={<Keyboards URL={URL} />} />
+        <Route path="/keyboards/<id>" element={<ShowKeyboards URL={URL} />} />
         <Route path="/components" element={<Components/>} />
         <Route path="/switches" element={<Switches URL={URL} />} />
         <Route path="/switches/<id>" element={<ShowSwitches URL={URL} />} />
