@@ -11,9 +11,9 @@ class BaseModel(Model):
 
 class User(UserMixin, BaseModel):
     id = AutoField()
-    username = CharField(unique=True)
-    email = CharField(unique=True)
-    password = CharField()
+    username = CharField(unique=True, null=False)
+    email = CharField(unique=True, null=False)
+    password = CharField(null=False)
     created_at = DateTimeField(default=datetime.datetime.now)
     # Build.id= AutoField()
     # Keyboard.id = AutoField()
@@ -22,41 +22,40 @@ class User(UserMixin, BaseModel):
     # Keycap.id = AutoField()
 
 class Keyboard(BaseModel):
-    name = CharField()
-    size = CharField()
+    name = CharField(unique=True, null=False)
+    size = CharField(null=False)
     id = AutoField()
     created_at = DateTimeField(default=datetime.datetime.now)
-    name = CharField()
-    size = IntegerField()
-    case_material = CharField()
-    connectivity = CharField()
-    backlit = CharField()
-    knob = BooleanField()
+    size = IntegerField(null=False)
+    case_material = CharField(null=False)
+    connectivity = CharField(null=False)
+    backlit = CharField(null=False)
+    knob = BooleanField(null=False)
     # compatibility = [CharField()]
 
 class Switch(BaseModel):
     id = AutoField()
     created_at = DateTimeField(default=datetime.datetime.now)
-    name = CharField()
-    type = CharField()
-    facing = CharField()
-    pins = IntegerField()
-    actuation_force = IntegerField()
+    name = CharField(unique=True, null=False)
+    type = CharField(null=False)
+    facing = CharField(null=False)
+    pins = IntegerField(null=False)
+    actuation_force = IntegerField(null=False)
     #compatibility = [CharField()]
 
 class Stabilizer(BaseModel):
     id = AutoField()
     created_at = DateTimeField(default=datetime.datetime.now)
-    name = CharField()
-    type = CharField()
+    name = CharField(unique=True, null=False)
+    type = CharField(null=False)
     #compatibility = [CharField()]
 
 class Keycap(BaseModel):
     id = AutoField()
-    name = CharField()
-    material = CharField()
-    profile = CharField()
-    legend = CharField()
+    name = CharField(unique=True, null=False)
+    material = CharField(null=False)
+    profile = CharField(null=False)
+    legend = CharField(null=False)
     #compatibility = [CharField()]
 
 # class Build(BaseModel):
