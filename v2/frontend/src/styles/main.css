@@ -1,9 +1,25 @@
+.App {
+    text-align: center;
+    background-color: #303030;
+    min-height: 100vh;
+    color: white;
+  }  
+
 .container {
     margin-top: 50px;
-
 }
 
 .form {
     margin:auto;
     width: 80%;
+}
+
+.logo-img {
+    width: 2em;
+    height: auto;
+}
+
+.btn-primary {
+    color:#303030;
+    background-color:white;
 }

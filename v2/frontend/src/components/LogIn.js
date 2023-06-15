@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import { Form, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
+import '../styles/main.css'
 
 function LogIn() {
     const [username, setUsername] = useState("")

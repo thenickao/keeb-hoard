@@ -1,3 +1,6 @@
+import '../styles/main.css'
+
+
 function Components() {
     
 }

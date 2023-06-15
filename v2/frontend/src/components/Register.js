@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import {Form, Button} from "react-bootstrap"
 import {Link} from "react-router-dom"
 import {useForm} from "react-hook-form"
+import '../styles/main.css'
 
 function Register() {
     // const [username, setUsername] = useState("")
@@ -9,7 +10,7 @@ function Register() {
     // const [password, setPassword] = useState("")
     // const [confirmPassword, setConfirmPassword] = useState("")
 
-    const {register, watch, handleSubmit, getValues, formState:{errors}} = useForm()
+    const {register, watch, handleSubmit, getValues, reset, formState:{errors}} = useForm()
 
     const submitForm = (data) => {
         // console.log("Form submitted")

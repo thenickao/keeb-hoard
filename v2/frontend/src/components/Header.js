@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import logoImage from "../styles/khlogo.jpg"
+import '../styles/main.css'
 
 function Header() {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -10,7 +12,9 @@ function Header() {
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary">
 			<div className="container-fluid">
-				<Link className="navbar-brand active" to="/">Keeb Hoard</Link>
+				<Link className="navbar-brand active" to="/">
+					<img src={logoImage} alt="Keeb Hoard" className="logo-img"/>
+				</Link>
 				<button
 					className="navbar-toggler"
 					type="button"
