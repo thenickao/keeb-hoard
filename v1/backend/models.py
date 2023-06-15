@@ -1,87 +1,86 @@
 from peewee import *
-from playhouse.postgres_ext import ArrayField
 import datetime
+from flask_login import UserMixin
+import sqlite3
 
 DATABASE = SqliteDatabase('keebhoard.sqlite')
 
-# class BaseModel(Model):
-#     class Meta:
-#         database = DATABASE
-
-class User(Model):
-    id = AutoField(primary_key=True)
-    username = AutoField()
-    password = AutoField()
-    build_id= AutoField()
-    keyboard_id = AutoField()
-    switch_id = AutoField()
-    stabilizer_id = AutoField()
-    keycap_id = AutoField()
-    created_at = DateTimeField(default=datetime.datetime.now)
+class BaseModel(Model):
     class Meta:
         database = DATABASE
 
-class Keyboard(Model):
-    keyboard_id = AutoField()
-    keyboard_name = Charfield()
-    size = PositiveSmallIntegerField()
-    case_material = Charfield()
-    connectivity = Charfield()
-    backlit = Charfield()
-    knob = BooleanField
-    compatibility = ArrayField(CharField())
+class User(UserMixin, BaseModel):
+    id = AutoField()
+    username = CharField(unique=True)
+    email = CharField(unique=True)
+    password = CharField()
     created_at = DateTimeField(default=datetime.datetime.now)
-    class Meta:
-        database = DATABASE
+    # Build.id= AutoField()
+    # Keyboard.id = AutoField()
+    # Switch.id = AutoField()
+    # Stabilizer.id = AutoField()
+    # Keycap.id = AutoField()
 
-class Switch(Model):
-    switch_id = AutoField()
-    switch_name = Charfield()
-    category = Charfield()
-    facing = Charfield()
-    pins = PositiveSmallIntegerField()
-    actuation_force = PositiveSmallIntegerField()
-    compatibility = ArrayField(CharField())
+class Keyboard(BaseModel):
+    name = CharField()
+    size = CharField()
+    id = AutoField()
     created_at = DateTimeField(default=datetime.datetime.now)
-    class Meta:
-        database = DATABASE
+    name = CharField()
+    size = IntegerField()
+    case_material = CharField()
+    connectivity = CharField()
+    backlit = CharField()
+    knob = BooleanField()
+    # compatibility = [CharField()]
 
-class Stabilizer(Model):
-    stabilizer_id = AutoField()
-    stabilizer_name = Charfield()
-    compatibility = ArrayField(CharField())
+class Switch(BaseModel):
+    id = AutoField()
     created_at = DateTimeField(default=datetime.datetime.now)
-    class Meta:
-        database = DATABASE
+    name = CharField()
+    type = CharField()
+    facing = CharField()
+    pins = IntegerField()
+    actuation_force = IntegerField()
+    #compatibility = [CharField()]
 
-class Keycap(Model):
-    keycap_id = AutoField()
-    keycap_name = Charfield()
-    keycap_material = Charfield()
-    legend = Charfield()
-    compatibility = ArrayField(CharField())
+class Stabilizer(BaseModel):
+    id = AutoField()
     created_at = DateTimeField(default=datetime.datetime.now)
-    class Meta:
-        database = DATABASE
+    name = CharField()
+    type = CharField()
+    #compatibility = [CharField()]
 
-class Build(Model):
-    build_id = AutoField()
-    keyboard_id = AutoField()
-    switch_id = AutoField()
-    stabilizer_id = AutoField()
-    keycap_id = AutoField()
-    created_at = DateTimeField(default=datetime.datetime.now)
-    class Meta:
-        database = DATABASE
+class Keycap(BaseModel):
+    id = AutoField()
+    name = CharField()
+    material = CharField()
+    profile = CharField()
+    legend = CharField()
+    #compatibility = [CharField()]
+
+# class Build(BaseModel):
+#     build_id = AutoField()
+#     keyboard_id = AutoField()
+#     switch_id = AutoField()
+#     stabilizer_id = AutoField()
+#     keycap_id = AutoField()
 
 def initialize():
     DATABASE.connect()
-    DATABASE.create_tables([User], safe=True)
-    DATABASE.create_tables([Keyboard], safe=True)
-    DATABASE.create_tables([Switch], safe=True)
-    DATABASE.create_tables([Stabilizer], safe=True)
-    DATABASE.create_tables([Keycap], safe=True)
-    DATABASE.create_tables([Build], safe=True)
-
-    print("Connected to the Database and created tables if they don't already exist")
+    DATABASE.create_tables([User, Keyboard, Switch, Stabilizer, Keycap], safe=True)
+    # DATABASE.create_tables([Build], safe=True)
+    print('Connected to the DB and created tables if they dont already exist')
     DATABASE.close()
+
+# def delete_tables():
+#     conn = sqlite3.connect('keebhoard.sqlite')
+#     conn.execute('PRAGMA foreign_keys = OFF')
+#     conn.execute('DROP TABLE IF EXISTS user')
+#     conn.execute('DROP TABLE IF EXISTS keyboard')
+#     conn.execute('DROP TABLE IF EXISTS switch')
+#     conn.execute('DROP TABLE IF EXISTS stabilizer')
+#     # conn.execute('DROP TABLE IF EXISTS build')
+#     conn.commit()
+#     conn.close()
+# delete_tables()
