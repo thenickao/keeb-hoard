@@ -2,7 +2,7 @@ import React from 'react'
 
 function ShowKeyboards() {
     return(
-        <div className="keyboard">
+        <div className="keyboard container">
             <h1>This is Keyboard ______</h1>
         </div>
     )

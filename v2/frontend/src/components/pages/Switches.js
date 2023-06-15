@@ -2,7 +2,7 @@ import React from 'react'
 
 function Switches() {
     return(
-        <div className="switches">
+        <div className="switches container">
             <h1>Switches</h1>
         </div>
     )
