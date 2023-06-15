@@ -40,42 +40,18 @@ function App() {
           
           <Header />
           <Routes>
-            <Route path="/">
-              <Home/>
-            </Route>
-            <Route path="/keyboards">
-              <Keyboards/>
-            </Route>
-            <Route path="/keyboards/<id>">
-              <ShowKeyboards/>
-            </Route>
-            <Route path="/components">
-              <Components/>
-            </Route>
-            <Route path="/switches">
-              <Switches/>
-            </Route>
-            <Route path="/switches/<id>">
-              <ShowSwitches/>
-            </Route>
-            <Route path="/stabilizers">
-              <Stabilizers/>
-            </Route>
-            <Route path="/stabilizers/<id>">
-              <ShowStabilizers/>
-            </Route>
-            <Route path="/keycaps">
-              <Keycaps/>
-            </Route>
-            <Route path="/keycaps/<id>">
-              <ShowKeycaps/>
-            </Route>
-            <Route path="/login">
-              <LogIn/>
-            </Route>
-            <Route path="/register">
-              <Register/>
-            </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/keyboards" element={<Keyboards />} />
+            <Route path="/keyboards/:id" element={<ShowKeyboards />} />
+            <Route path="/components" element={<Components />} />
+            <Route path="/switches" element={<Switches />} />
+            <Route path="/switches/:id" element={<ShowSwitches />} />
+            <Route path="/stabilizers" element={<Stabilizers />} />
+            <Route path="/stabilizers/:id" element={<ShowStabilizers />} />
+            <Route path="/keycaps" element={<Keycaps />} />
+            <Route path="/keycaps/:id" element={<ShowKeycaps />} />
+            <Route path="/login" element={<LogIn />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         
           <Footer />
