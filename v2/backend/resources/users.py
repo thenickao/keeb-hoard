@@ -54,7 +54,7 @@ def logout():
         message= 'successful logout'
     ), 200
 
-@users.route('/', methods=['GET'])
+@users.route('/index', methods=['GET'])
 # @login_required
 def users_index():
     result = models.User.select()

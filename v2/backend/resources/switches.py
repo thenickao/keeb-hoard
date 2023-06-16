@@ -5,7 +5,7 @@ from playhouse.shortcuts import model_to_dict
 
 switches = Blueprint('switches', 'switches')
 
-@switches.route('/', methods=['GET'])
+@switches.route('/index', methods=['GET'])
 # @login_required
 def switches_index():
     result = models.Switch.select()

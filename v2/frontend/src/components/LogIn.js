@@ -23,12 +23,11 @@ function LogIn() {
                 <form>
                     <Form.Group>
                         <Form.Label>Username</Form.Label>
-                        <Form.Control type="text" placeholder="your username" value={username} name="username" onChange={(e)=>{setUsername(e.target.value)}}/>
+                        <Form.Control type="text" placeholder="your username" value={username} name="username" onChange={(e)=>{setUsername(e.target.value)}} maxLength={20}/>
                     </Form.Group>
-                    <br></br>
                     <Form.Group>
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="your password"value={password} name="password"onChange={(e)=>{setPassword(e.target.value)}}/>
+                        <Form.Control type="password" placeholder="your password"value={password} name="password"onChange={(e)=>{setPassword(e.target.value)}} maxLength={20}/>
                     </Form.Group>
                     <br></br>
                     <Form.Group>

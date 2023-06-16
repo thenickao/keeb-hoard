@@ -75,28 +75,26 @@ function Register() {
                 <form>
                     <Form.Group>
                         <Form.Label>Username</Form.Label>
-                        <Form.Control type="text" placeholder="your username" {...register("username", {required:true, unique:true})}/>
+                        <Form.Control type="text" placeholder="your username" {...register("username", {required:true, unique:true})} maxLength={20}/>
                     </Form.Group>
                     {errors.username && errors.username.type === 'required' && <p style={{color:"red"}}><small>Username is required</small></p>}
                     {errors.username && errors.username.type === 'unique' && <p style={{color:"red"}}><small>Username is taken</small></p>}
-                    <br></br>
                     <Form.Group>
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="your email" {...register("email", {required:true, unique:true})}/>
+                        <Form.Control type="email" placeholder="your email" {...register("email", {required:true, unique:true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/})}/>
                     </Form.Group>
                     {errors.email && errors.email.type === 'required' && <p style={{color:"red"}}><small>Email is required</small></p>}
                     {errors.email && errors.email.type === 'unique' && <p style={{color:"red"}}><small>Email is taken</small></p>}
-                    <br></br>
+                    {errors.email && errors.email.type === 'pattern' && <p style={{color:"red"}}><small>Email address is invalid</small></p>}
                     <Form.Group>
                         <Form.Label>Password (must be 8 characters or longer)</Form.Label>
-                        <Form.Control type="password" placeholder="your password" {...register("password", {required:true, minLength:8})}/>
+                        <Form.Control type="password" placeholder="your password" {...register("password", {required:true, minLength:8})} maxLength={20}/>
                     </Form.Group>
                     {errors.password && errors.password.type === 'required' && <p style={{color:"red"}}><small>Password is required</small></p>}
                     {errors.password && errors.password.type === 'minLength' && <p style={{color:"red"}}><small>Password not long enough</small></p>}
-                    <br></br>
                     <Form.Group>
                         <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control type="password" placeholder="confirm password" {...register("confirmPassword", {required:true, validate: (value) => value === getValues("password") || "Passwords do not match"})}/>
+                        <Form.Control type="password" placeholder="confirm password" {...register("confirmPassword", {required:true, validate: (value) => value === getValues("password") || "Passwords do not match"})} maxLength={20}/>
                     </Form.Group>
                     {errors.confirmPassword && errors.confirmPassword.type === 'required' && <p style={{color:"red"}}><small>Please confirm your password</small></p>}
                     {errors.confirmPassword && errors.confirmPassword.type === 'validate' && <p style={{color:"red"}}><small>Passwords do not match</small></p>}

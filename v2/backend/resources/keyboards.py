@@ -4,24 +4,24 @@ from playhouse.shortcuts import model_to_dict
 # from flask_login import login_required
 from flask_cors import CORS
 
-keyboards = Blueprint('keyboards', 'keyboards')
+keyboards = Blueprint("keyboards", "keyboards")
 
-@keyboards.route('/', methods=['GET'])
+@keyboards.route("/index", methods=["GET"])
 # @login_required
 def keyboards_index():
     result = models.Keyboard.select()
-    print('results of keyboard select query')
+    print("results of keyboard select query")
     print(result)
 
     keyboard_dicts = [model_to_dict(keyboard) for keyboard in result]
     
     return jsonify({
-        'data': keyboard_dicts,
-        'message': f"Successfully found {len(keyboard_dicts)} keyboards",
-        'status': 200
+        "data": keyboard_dicts,
+        "message": f"Successfully found {len(keyboard_dicts)} keyboards",
+        "status": 200
     }), 200
 
-@keyboards.route('/', methods=['POST'])
+@keyboards.route("/", methods=["POST"])
 def create_keyboards():
     payload = request.get_json()
     print(payload)
@@ -35,7 +35,7 @@ def create_keyboards():
     ), 201
     return "you hit the create route -- check terminal"
 
-@keyboards.route('/<id>', methods=['GET'])
+@keyboards.route("/<id>", methods=["GET"])
 def get_one_keyboard(id):
     keyboard = models.Keyboard.get_by_id(id)
     print(keyboard)
@@ -45,7 +45,7 @@ def get_one_keyboard(id):
         status=200
     ), 200
 
-@keyboards.route('/<id>', methods=['PUT'])
+@keyboards.route("/<id>", methods=["PUT"])
 def update_keyboards(id):
     payload = request.get_json()
     print(payload)
@@ -58,7 +58,7 @@ def update_keyboards(id):
         status=200
     ), 200
 
-@keyboards.route('/<id>',  methods=['DELETE'])
+@keyboards.route("/<id>",  methods=["DELETE"])
 def delete_keyboard(id):
     delete_query = models.Keyboard.delete().where(models.Keyboard.id == id)
     nums_of_rows_deleted = delete_query.execute()

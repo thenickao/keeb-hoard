@@ -5,7 +5,7 @@ from playhouse.shortcuts import model_to_dict
 
 keycaps = Blueprint('keycaps', 'keycaps')
 
-@keycaps.route('/', methods=['GET'])
+@keycaps.route('/index', methods=['GET'])
 # @login_required
 def keycaps_index():
     result = models.Keycap.select()

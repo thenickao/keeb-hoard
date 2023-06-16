@@ -14,6 +14,7 @@ login_manager = LoginManager()
 DEBUG=True
 PORT=8000
 app = Flask(__name__)
+CORS(app)
 
 app.secret_key = "LJAKLJLKJJLJKLSDJLKJASD"
 login_manager.init_app(app)
@@ -38,21 +39,22 @@ def before_request():
 def after_request(response):
     g.db.close()
     return response
-CORS(users)
+
+    
 CORS(users, origins=["http://localhost:3000"], supports_credentials=True)
-app.register_blueprint(users, url_prefix="/register")
-CORS(keyboards)
-CORS(keyboards, origin=["http://localhost:3000", "http://localhost:3000/keyboards"], supports_credentials=True)
-app.register_blueprint(keyboards, url_prefix="/api/v1/keyboards")
+app.register_blueprint(users, url_prefix="/user")
+
+CORS(keyboards, origins=["http://localhost:3000"], supports_credentials=True)
+app.register_blueprint(keyboards, url_prefix="/keyboard")
 
 CORS(switches, origins=["http://localhost:3000"], supports_credentials=True)
-app.register_blueprint(switches, url_prefix="/api/v1/switches")
+app.register_blueprint(switches, url_prefix="/switch")
 
 CORS(stabilizers, origins=["http://localhost:3000"], supports_credentials=True)
-app.register_blueprint(stabilizers, url_prefix="/api/v1/stabilizers")
+app.register_blueprint(stabilizers, url_prefix="/stabilizer")
 
 CORS(keycaps, origins=["http://localhost:3000"], supports_credentials=True)
-app.register_blueprint(keycaps, url_prefix="/api/v1/keycaps")
+app.register_blueprint(keycaps, url_prefix="/keycap")
 
 
 # @app.route("/")

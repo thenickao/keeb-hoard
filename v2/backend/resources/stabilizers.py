@@ -5,7 +5,7 @@ from playhouse.shortcuts import model_to_dict
 
 stabilizers = Blueprint('stabilizers', 'stabilizers')
 
-@stabilizers.route('/', methods=['GET'])
+@stabilizers.route('/index', methods=['GET'])
 # @login_required
 def stabilizers_index():
     result = models.Stabilizer.select()
