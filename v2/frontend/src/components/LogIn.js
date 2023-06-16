@@ -36,7 +36,7 @@ function LogIn() {
                     </Form.Group>
                     <br></br>
                     <Form.Group>
-                        <small>Do not have an account? <Link to="/register">Register Here</Link></small>
+                        <small>Do not have an account? <Link className="reroute" to="/register">Register Here</Link></small>
                     </Form.Group>
                 </form>
             </div>

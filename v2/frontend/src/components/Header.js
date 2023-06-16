@@ -23,9 +23,14 @@ function Header() {
 					>
 					<span className="navbar-toggler-icon"></span>
 					</button>
-					<div
+					<div className={`collapse navbar-collapse ${isDropdownOpen ? 'show' : ''}`}>
+						<ul className="navbar-nav">
+							{/* Navigation options */}
+						</ul>
+					</div>
+					{/* <div
 					className={`collapse navbar-collapse ${isDropdownOpen ? 'show' : ''}`}
-					></div>
+					></div> */}
 				{/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button> */}

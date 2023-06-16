@@ -23,15 +23,37 @@ function Register() {
         // setEmail("")
         // setPassword("")
         // setConfirmPassword("")
-        reset()
 
         // console.log(data)
 
-        const requestOptions = {
-            
-        }
+        if(data.password === data.confirmPassword) {
 
-        fetch("/auth/register", requestOptions)
+            const body = {
+                username: data.username,
+                email: data.email,
+                password: data.password,
+            }
+
+            const requestOptions = {
+                method:"POST",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(body)
+            }
+
+            fetch("/register", requestOptions)
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
+
+            reset()
+
+            }
+
+            else {
+                alert("Passwords do not match")
+        }
     }
 
     // console.log(watch("username"))
@@ -79,7 +101,7 @@ function Register() {
                     </Form.Group>
                     <br></br>
                     <Form.Group>
-                        <small>Already have an account? <Link to="/login">Log In Here</Link></small>
+                        <small>Already have an account? <Link className="reroute" to="/login">Log In Here</Link></small>
                     </Form.Group>
                 </form>
             </div>
