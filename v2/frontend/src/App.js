@@ -5,7 +5,7 @@ import './styles/main.css'
 
 import Header from "./components/Header"
 import Footer from "./components/Footer"
-import { BrowserRouter as Router, Routes, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from "./components/Home"
 
 import Keyboards from "./components/Keyboards"

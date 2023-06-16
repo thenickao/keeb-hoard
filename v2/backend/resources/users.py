@@ -4,6 +4,7 @@ from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user
 from playhouse.shortcuts import model_to_dict
 
+
 users = Blueprint('users', 'users')
 
 @users.route('/register', methods=["POST"])
@@ -67,3 +68,14 @@ def users_index():
         'message': f"Successfully found {len(user_dicts)} users",
         'status': 200
     }), 200
+
+@users.route('/delete/<id>',  methods=['DELETE'])
+def delete_user(id):
+    delete_query = models.User.delete().where(models.User.id == id)
+    nums_of_rows_deleted = delete_query.execute()
+    print(nums_of_rows_deleted)
+    return jsonify(
+        data={},
+        message=f"Successfully deleted {nums_of_rows_deleted} user with id {id}",
+        status=200
+    ), 200

@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {Form, Button} from "react-bootstrap"
+import {Form, Button, Alert} from "react-bootstrap"
 import {Link} from "react-router-dom"
 import {useForm} from "react-hook-form"
 import '../styles/main.css'
@@ -11,6 +11,7 @@ function Register() {
     // const [confirmPassword, setConfirmPassword] = useState("")
 
     const {register, watch, handleSubmit, getValues, reset, formState:{errors}} = useForm()
+    const [show,setShow] = useState(true)
 
     const submitForm = (data) => {
         // console.log("Form submitted")
@@ -42,7 +43,7 @@ function Register() {
                 body:JSON.stringify(body)
             }
 
-            fetch("/register", requestOptions)
+            fetch("http://localhost:8000/register/register", requestOptions)
             .then(res => res.json())
             .then(data => console.log(data))
             .catch(err => console.log(err))
@@ -66,6 +67,10 @@ function Register() {
         <div className="register container">
             <div className="form">
                 <h1>Register</h1>
+                {/* <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>TEXT HERE
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div> */}
                 <br></br>
                 <form>
                     <Form.Group>

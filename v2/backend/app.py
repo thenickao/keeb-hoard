@@ -7,6 +7,7 @@ from resources.keycaps import keycaps
 import models
 from flask_cors import CORS
 from flask_login import LoginManager
+# from flask_jwt_extended import JWTManager
 
 login_manager = LoginManager()
 
@@ -37,45 +38,45 @@ def before_request():
 def after_request(response):
     g.db.close()
     return response
+CORS(users)
+CORS(users, origins=["http://localhost:3000"], supports_credentials=True)
+app.register_blueprint(users, url_prefix="/register")
+CORS(keyboards)
+CORS(keyboards, origin=["http://localhost:3000", "http://localhost:3000/keyboards"], supports_credentials=True)
+app.register_blueprint(keyboards, url_prefix="/api/v1/keyboards")
 
-CORS(users, origins=['http://localhost:3000'], supports_credentials=True)
-app.register_blueprint(users, url_prefix='/users')
+CORS(switches, origins=["http://localhost:3000"], supports_credentials=True)
+app.register_blueprint(switches, url_prefix="/api/v1/switches")
 
-CORS(keyboards, origins=['http://localhost:3000'], supports_credentials=True)
-app.register_blueprint(keyboards, url_prefix='/api/v1/keyboards')
+CORS(stabilizers, origins=["http://localhost:3000"], supports_credentials=True)
+app.register_blueprint(stabilizers, url_prefix="/api/v1/stabilizers")
 
-CORS(switches, origins=['http://localhost:3000'], supports_credentials=True)
-app.register_blueprint(switches, url_prefix='/api/v1/switches')
-
-CORS(stabilizers, origins=['http://localhost:3000'], supports_credentials=True)
-app.register_blueprint(stabilizers, url_prefix='/api/v1/stabilizers')
-
-CORS(keycaps, origins=['http://localhost:3000'], supports_credentials=True)
-app.register_blueprint(keycaps, url_prefix='/api/v1/keycaps')
+CORS(keycaps, origins=["http://localhost:3000"], supports_credentials=True)
+app.register_blueprint(keycaps, url_prefix="/api/v1/keycaps")
 
 
-# @app.route('/')
+# @app.route("/")
 # def home():
-#     return jsonify('Hello, this is home.')
+#     return jsonify("Hello, this is home.")
 
-# @app.route('/<keyboard>')
+# @app.route("/<keyboard>")
 # def keyboard(keyboard):
 #     return f"This is {keyboard}"
 
-# @app.route('/keyboards')
+# @app.route("/keyboards")
 # def keyboards():
 #     return {"This is the keyboards test": ["keyboard1", "keyboard2", "keyboard3"]}
 
-# @app.route('/<keyboard>')
+# @app.route("/<keyboard>")
 # def keyboard(keyboard):
 #     data = {"message": f"This is {keyboard}"}
 #     return jsonify(data)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     models.initialize()
     app.run(debug=DEBUG, port=PORT)
 
-# if __name__ == '__main__':
+# if __name__ == "__main__":
 #     models.delete_tables()
 #     app.run(debug=DEBUG, port=PORT)
