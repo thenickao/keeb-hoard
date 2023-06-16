@@ -1,11 +1,13 @@
 import React, {useState} from "react"
 import { Form, Button } from "react-bootstrap"
-import { Link } from 'react-router-dom'
-import '../styles/main.css'
+import { Link, useNavigate } from "react-router-dom"
+import "../styles/main.css"
 
 function LogIn() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+
+    const navigate = useNavigate()
 
     const logIn = () => {
         console.log(username)
@@ -13,6 +15,8 @@ function LogIn() {
 
         setUsername("")
         setPassword("")
+
+        navigate("/")
     }
     
     return(
@@ -31,7 +35,7 @@ function LogIn() {
                     </Form.Group>
                     <br></br>
                     <Form.Group>
-                        <Button as="sub" variant="primary" onClick={logIn}>Log In</Button>
+                        <Button as="sub" variant="primary" onClick={logIn}>Enter the Hoard</Button>
                     </Form.Group>
                     <br></br>
                     <Form.Group>

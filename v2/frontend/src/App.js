@@ -14,7 +14,7 @@ import Switches from "./components/Switches"
 import Stabilizers from "./components/Stabilizers"
 import Keycaps from "./components/Keycaps"
 
-import ShowKeyboards from "./components/ShowKeyboards"
+import ShowKeyboard from "./components/ShowKeyboard"
 import ShowSwitches from "./components/ShowSwitches"
 import ShowStabilizers from "./components/ShowStabilizers"
 import ShowKeycaps from "./components/ShowKeycaps"
@@ -43,7 +43,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/keyboards" element={<Keyboards />} />
-            <Route path="/keyboards/:id" element={<ShowKeyboards />} />
+            <Route path="/keyboard/:id" element={<ShowKeyboard />} />
             <Route path="/components" element={<Components />} />
             <Route path="/switches" element={<Switches />} />
             <Route path="/switches/:id" element={<ShowSwitches />} />

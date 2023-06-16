@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import {Form, Button, Alert} from "react-bootstrap"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import {useForm} from "react-hook-form"
 import '../styles/main.css'
 
@@ -12,6 +12,8 @@ function Register() {
 
     const {register, watch, handleSubmit, getValues, reset, formState:{errors}} = useForm()
     const [show,setShow] = useState(true)
+
+    const navigate = useNavigate()
 
     const submitForm = (data) => {
         // console.log("Form submitted")
@@ -49,6 +51,8 @@ function Register() {
             .catch(err => console.log(err))
 
             reset()
+
+            navigate("/login")
 
             }
 
@@ -100,7 +104,7 @@ function Register() {
                     {errors.confirmPassword && errors.confirmPassword.type === 'validate' && <p style={{color:"red"}}><small>Passwords do not match</small></p>}
                     <br></br>
                     <Form.Group>
-                        <Button as="sub" variant="primary" onClick={handleSubmit(submitForm)}>Sign Up!</Button>
+                        <Button as="sub" variant="primary" onClick={handleSubmit(submitForm)}>Join the Hoard</Button>
                     </Form.Group>
                     <br></br>
                     <Form.Group>

@@ -108,3 +108,14 @@
     width: 50%;
     /* margin: 0 auto;  */
 }
+
+/* Keyboard */
+.keyboard-item a {
+    color:white;
+    transition: color 1s;
+    transition: background-color 1s;
+}
+.keyboard-item a:hover {
+    color:#303030;
+    background-color: white;
+}
