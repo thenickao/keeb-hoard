@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, g
 from resources.users import users
 from resources.keyboards import keyboards
+from resources.keyboards import keyboard
 from resources.switches import switches
 from resources.stabilizers import stabilizers
 from resources.keycaps import keycaps
@@ -46,6 +47,9 @@ app.register_blueprint(users, url_prefix="/user")
 
 CORS(keyboards, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(keyboards, url_prefix="/keyboard")
+
+CORS(keyboard, origins=["http://localhost:3000"], supports_credentials=True)
+app.register_blueprint(keyboard, url_prefix="/keyboard")
 
 CORS(switches, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(switches, url_prefix="/switch")

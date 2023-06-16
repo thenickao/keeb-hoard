@@ -5,6 +5,7 @@ from playhouse.shortcuts import model_to_dict
 from flask_cors import CORS
 
 keyboards = Blueprint("keyboards", "keyboards")
+keyboard = Blueprint("keyboard", "keyboard")
 
 @keyboards.route("/index", methods=["GET"])
 # @login_required

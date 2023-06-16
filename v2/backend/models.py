@@ -23,7 +23,6 @@ class User(UserMixin, BaseModel):
 
 class Keyboard(BaseModel):
     name = CharField(unique=True, null=False)
-    size = CharField(null=False)
     id = AutoField()
     created_at = DateTimeField(default=datetime.datetime.now)
     size = IntegerField(null=False)
