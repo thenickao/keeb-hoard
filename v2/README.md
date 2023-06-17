@@ -34,6 +34,12 @@ User Story:
 _
 
 Wireframe:
+![1](https://github.com/thenickao/keeb-hoard/assets/115501715/013cee47-163d-43da-82b1-9db7f26452d0)
+![2](https://github.com/thenickao/keeb-hoard/assets/115501715/a857c2d3-ac45-4890-9684-5657ead316ae)
+![3](https://github.com/thenickao/keeb-hoard/assets/115501715/4eb2e748-1d1c-41dd-a6d0-fffbdd887b51)
+![4](https://github.com/thenickao/keeb-hoard/assets/115501715/1a05bb5e-ffe1-4dbc-b8c7-332ba6829353)
+![5](https://github.com/thenickao/keeb-hoard/assets/115501715/b20f85d3-545c-49e6-bdea-33f1e384247c)
+![6](https://github.com/thenickao/keeb-hoard/assets/115501715/420a868e-3360-4451-ba3a-7bed69bdb1a4)
 
 _
 
