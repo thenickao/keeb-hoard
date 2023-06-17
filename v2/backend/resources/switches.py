@@ -46,7 +46,7 @@ def get_one_switch(id):
         status=200
     ), 200
 
-@switches.route('/<id>', methods=['PUT'])
+@switches.route('/edit/<id>', methods=['PUT'])
 def update_switches(id):
     payload = request.get_json()
     print(payload)

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Link} from "react-router-dom"
+
 
 function Keyboards() {
   const [keyboards, setKeyboards] = useState([]);
@@ -25,6 +27,10 @@ function Keyboards() {
     <div className="keyboards container">
       <h1>Keyboards</h1>
       <br></br>
+      <Link to="/keyboard/create" className="btn btn-primary">
+              Add a Keyboard
+      </Link>
+      <br></br><br></br>
       {keyboards.map(keyboard => (
         <div key={keyboard.id} className="keyboard-item">
           <h3>

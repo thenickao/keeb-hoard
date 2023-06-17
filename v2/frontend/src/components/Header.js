@@ -43,7 +43,7 @@ function Header() {
 							<Link className="nav-link active" to="/register">Register</Link>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link active" to="/keyboards">Keyboards</Link>
+							<Link className="nav-link active" to="/keyboard/index">Keyboards</Link>
 						</li>
 						<li className="nav-item">
 							<Link className="nav-link active" to="/keyboards/<id>"></Link>
@@ -61,9 +61,9 @@ function Header() {
 							>
 							{/* <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Components</a>
 							<ul className="dropdown-menu"> */}
-								<li><Link className="dropdown-item" to="/switches">Switches</Link></li>
-								<li><Link className="dropdown-item" to="/stabilizers">Stabilizers</Link></li>
-								<li><Link className="dropdown-item" to="/keycaps">Keycaps</Link></li>
+								<li><Link className="dropdown-item" to="/switch/index">Switches</Link></li>
+								<li><Link className="dropdown-item" to="/stabilizer/index">Stabilizers</Link></li>
+								<li><Link className="dropdown-item" to="/keycap/index">Keycaps</Link></li>
 							</ul>
 						</li>
 						{/* <li className="nav-item">

@@ -8,22 +8,70 @@ import Footer from "./components/Footer"
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from "./components/Home"
 
-import Keyboards from "./components/Keyboards"
-import Components from "./components/Components"
-import Switches from "./components/Switches"
-import Stabilizers from "./components/Stabilizers"
-import Keycaps from "./components/Keycaps"
+import Keyboards from "./components/models/Keyboards"
+// import Components from "./components/Components"
+import Switches from "./components/models/Switches"
+import Stabilizers from "./components/models/Stabilizers"
+import Keycaps from "./components/models/Keycaps"
 
-import ShowKeyboard from "./components/ShowKeyboard"
-import ShowSwitch from "./components/ShowSwitch"
-import ShowStabilizer from "./components/ShowStabilizer"
-import ShowKeycap from "./components/ShowKeycap"
+import ShowKeyboard from "./components/show/ShowKeyboard"
+import ShowSwitch from "./components/show/ShowSwitch"
+import ShowStabilizer from "./components/show/ShowStabilizer"
+import ShowKeycap from "./components/show/ShowKeycap"
+
+import CreateKeyboard from "./components/create/CreateKeyboard"
+import CreateSwitch from "./components/create/CreateSwitch"
+import CreateStabilizer from "./components/create/CreateStabilizer"
+import CreateKeycap from "./components/create/CreateKeycap"
+
+import EditKeyboard from "./components/edit/EditKeyboard"
+import EditSwitch from "./components/edit/EditSwitch"
+import EditStabilizer from "./components/edit/EditStabilizer"
+import EditKeycap from "./components/edit/EditKeycap"
 
 import LogIn from "./components/LogIn"
 import Register from "./components/Register"
 
 
 function App() {
+  return (
+      <Router>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/keyboard/index" element={<Keyboards />} />
+            <Route path="/keyboard/:id" element={<ShowKeyboard />} />
+            <Route path="/keyboard/create" element={<CreateKeyboard />} />
+            <Route path="/keyboard/edit/:id" element={<EditKeyboard />} />
+
+            <Route path="/switch/index" element={<Switches />} />
+            <Route path="/switch/:id" element={<ShowSwitch />} />
+            <Route path="/switch/create" element={<CreateSwitch />} />
+            <Route path="/switch/edit/:id" element={<EditSwitch />} />
+
+            <Route path="/stabilizer/index" element={<Stabilizers />} />
+            <Route path="/stabilizer/:id" element={<ShowStabilizer />} />
+            <Route path="/stabilizer/create" element={<CreateStabilizer />} />
+            <Route path="/stabilizer/edit/:id" element={<EditStabilizer />} />
+
+            <Route path="/keycap/index" element={<Keycaps />} />
+            <Route path="/keycap/:id" element={<ShowKeycap />} />
+            <Route path="/keycap/create" element={<CreateKeycap />} />
+            <Route path="/keycap/edit/:id" element={<EditKeycap />} />
+
+            <Route path="/login" element={<LogIn />} />
+            <Route path="/register" element={<Register />} />
+            {/* <Route path="/components" element={<Components />} /> */}
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+  );
+}
+
+export default App;
+
   // const [display, setDisplay] = useState('')
   // useEffect(() => {
   //   fetch('/api/v1/keyboards')
@@ -34,32 +82,3 @@ function App() {
   //   .catch(error => console.log(error))
 
   // }, [])
-
-  return (
-      <Router>
-        <div className="App">
-          
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/keyboards" element={<Keyboards />} />
-            <Route path="/keyboard/:id" element={<ShowKeyboard />} />
-            <Route path="/components" element={<Components />} />
-            <Route path="/switches" element={<Switches />} />
-            <Route path="/switch/:id" element={<ShowSwitch />} />
-            <Route path="/stabilizers" element={<Stabilizers />} />
-            <Route path="/stabilizer/:id" element={<ShowStabilizer />} />
-            <Route path="/keycaps" element={<Keycaps />} />
-            <Route path="/keycap/:id" element={<ShowKeycap />} />
-            <Route path="/login" element={<LogIn />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        
-          <Footer />
-
-        </div>
-      </Router>
-  );
-}
-
-export default App;

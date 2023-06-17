@@ -44,6 +44,12 @@ def after_request(response):
     g.db.close()
     return response
 
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
     
 CORS(users, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(users, url_prefix="/user")

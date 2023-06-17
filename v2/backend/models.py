@@ -29,7 +29,7 @@ class Keyboard(BaseModel):
     case_material = CharField(null=False)
     connectivity = CharField(null=False)
     backlit = CharField(null=False)
-    knob = BooleanField(null=False)
+    knob = BooleanField()
     # compatibility = [CharField()]
 
 class Switch(BaseModel):

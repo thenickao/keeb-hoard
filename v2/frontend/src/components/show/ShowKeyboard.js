@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Link, useParams} from "react-router-dom"
 
-function ShowKeyboard({id}) {
-    const [keyboard, setKeyboard] = useState();
-  
+function ShowKeyboard() {
+  const { id } = useParams()  
+  const [keyboard, setKeyboard] = useState();
+    
     useEffect(() => {
-      console.log(id)
-
       fetch(`http://localhost:8000/keyboard/${id}`, {
         method: "GET",
         mode: "cors",
@@ -15,7 +15,7 @@ function ShowKeyboard({id}) {
       })
         .then(response => response.json())
         .then(data => {
-          setKeyboard(data);
+          setKeyboard(data.data);
         })
         .catch(error => {
           console.error("Error fetching keyboard:", error);
@@ -26,13 +26,17 @@ function ShowKeyboard({id}) {
     }
     return (
         <div className="keyboard container">
+            <Link to="/keyboard/index" className="btn btn-primary">
+              Back to Keyboards
+            </Link>
+            <br></br><br></br>
             <h1>{keyboard.name}</h1>
             <br></br>
-            <p>{keyboard.size}</p>
-            <p>{keyboard.case_material}</p>
-            <p>{keyboard.connectivity}</p>
-            <p>{keyboard.backlit}</p>
-            <p>{keyboard.knob}</p>
+            <p>Size: {keyboard.size}%</p>
+            <p>Case Material: {keyboard.case_material}</p>
+            <p>Connectivity: {keyboard.connectivity}</p>
+            <p>Backlit: {keyboard.backlit}</p>
+            <p>Knob: {keyboard.knob === "true" ? "No" : "Yes"}</p>
         </div>
     )
 }
