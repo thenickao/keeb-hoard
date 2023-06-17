@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, } from "react-router-dom";
 
 function CreateKeyboard() {
   const [name, setName] = useState("");
@@ -9,30 +9,28 @@ function CreateKeyboard() {
   const [backlit, setBacklit] = useState("");
   const [knob, setKnob] = useState(false);
   const [loading, setLoading] = useState(false);
-
+    
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
-    fetch("http://localhost:8000/keyboard", {
+    let submitBody = JSON.stringify({
+      name,
+      size,
+      case_material: caseMaterial,
+      connectivity,
+      backlit: backlit.toString(),
+      knob: knob.toString()
+    })
+    console.log(submitBody)
+    fetch("http://localhost:8000/keyboard/", {
       method: "POST",
-      mode: "cors",
+      body: submitBody,
       headers: {
         "Content-Type": "application/json",
-        "origin": "http://localhost:3000"
-      },
-      body: JSON.stringify({
-        name,
-        size,
-        case_material: caseMaterial,
-        connectivity,
-        backlit: backlit.toString(),
-        knob: knob.toString()
-      })
+      }
     })
       .then(response => response.json())
       .then(data => {
-        // Handle success or display error message
         console.log("Keyboard created:", data);
         setLoading(false);
       })
@@ -41,7 +39,7 @@ function CreateKeyboard() {
         setLoading(false);
       });
   };
-
+   
   return (
     <div className="keyboard container">
       <Link to="/keyboard/index" className="btn btn-primary">
@@ -125,3 +123,4 @@ function CreateKeyboard() {
 }
 
 export default CreateKeyboard;
+

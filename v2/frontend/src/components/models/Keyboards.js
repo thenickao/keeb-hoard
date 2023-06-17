@@ -6,12 +6,11 @@ function Keyboards() {
   const [keyboards, setKeyboards] = useState([]);
 
   useEffect(() => {
-    
     fetch('http://localhost:8000/keyboard/index', {
       method: 'GET',
       mode: 'cors',
       headers: {
-        'origin': 'http://localhost:3000'
+        'origin': 'http://localhost:3000',
       }
     })
       .then(response => response.json())

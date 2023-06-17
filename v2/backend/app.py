@@ -1,21 +1,19 @@
 from flask import Flask, jsonify, g
 from resources.users import users
 from resources.keyboards import keyboards
-from resources.keyboards import keyboard
+# from resources.keyboards import keyboard
 from resources.switches import switches
-from resources.switches import switch
+# from resources.switches import switch
 from resources.stabilizers import stabilizers
-from resources.stabilizers import stabilizer
+# from resources.stabilizers import stabilizer
 from resources.keycaps import keycaps
-from resources.keycaps import keycap
+# from resources.keycaps import keycap
 import models
 from flask_cors import CORS
 from flask_login import LoginManager
 from flask_login import current_user
-# from flask_jwt_extended import create_access_token
-# from flask_jwt_extended import get_jwt_identity
-# from flask_jwt_extended import jwt_required
-# from flask_jwt_extended import JWTManager
+
+from flask_jwt_extended import JWTManager
 
 login_manager = LoginManager()
 
@@ -24,12 +22,12 @@ PORT=8000
 app = Flask(__name__)
 # app.config["JWT_SECRET_KEY"] = "WE423098RUIYE6548793RWJHKGFDJK354987GFDJKHFGD"
 # jwt = JWTManager(app)
-app.config['CORS_SUPPORTS_CREDENTIALS'] = True
-cors = CORS(app, origins=['http://localhost:3000'], supports_credentials=True)
-cors = CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+# app.config["CORS_SUPPORTS_CREDENTIALS"] = True
+CORS(app, origins=["http://localhost:3000"])
+# CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
-app.secret_key = "LJAKLJLKJJLJKLSDJLKJASD"
-login_manager.init_app(app)
+# app.secret_key = "LJAKLJLKJJLJKLSDJLKJASD"
+# login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(id):
@@ -53,12 +51,12 @@ def after_request(response):
     g.db.close()
     return response
 
-@app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
-    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-    return response
+# @app.after_request
+# def add_cors_headers(response):
+#     response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
+#     response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE"
+#     response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+#     return response
     
 app.register_blueprint(users, url_prefix="/user")
 app.register_blueprint(keyboards, url_prefix="/keyboard")

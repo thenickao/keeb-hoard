@@ -12,25 +12,22 @@ function CreateSwitch() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
-    fetch("http://localhost:8000/switch", {
+    let submitBody = JSON.stringify({
+      name,
+      type,
+      facing,
+      pins,
+      actuation_force: actuationForce
+    })
+    fetch("http://localhost:8000/switch/", {
       method: "POST",
-      mode: "cors",
+      body: submitBody,
       headers: {
         "Content-Type": "application/json",
-        "origin": "http://localhost:3000"
       },
-      body: JSON.stringify({
-        name,
-        type,
-        facing,
-        pins,
-        actuationForce
-      })
     })
       .then(response => response.json())
       .then(data => {
-        // Handle success or display error message
         console.log("Switch created:", data);
         setLoading(false);
       })

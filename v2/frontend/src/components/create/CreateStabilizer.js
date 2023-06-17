@@ -9,22 +9,20 @@ function CreateStabilizer() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
-    fetch("http://localhost:8000/stabilizer", {
+    let submitBody = JSON.stringify({
+      name,
+      type
+    })
+      fetch("http://localhost:8000/stabilizer/", {
       method: "POST",
+      body: submitBody,
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
-        "origin": "http://localhost:3000"
       },
-      body: JSON.stringify({
-        name,
-        type
-      })
     })
       .then(response => response.json())
       .then(data => {
-        // Handle success or display error message
         console.log("Stabilizer created:", data);
         setLoading(false);
       })

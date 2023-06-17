@@ -42,12 +42,11 @@
     color: black;
     transition: color 1s;
     transition: background-color 1s;
-  }
-  
-  .navbar-nav .nav-item .nav-link:hover, .dropdown-item:hover {
+}
+.navbar-nav .nav-item .nav-link:hover, .dropdown-item:hover {
     color:rgb(220, 220, 220);
     background-color: #303030;
-  }
+}
 
 /* Submit Links/Rerouting */
 .btn-primary {

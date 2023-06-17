@@ -3,10 +3,9 @@ from flask import request, jsonify, Blueprint
 from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
 from playhouse.shortcuts import model_to_dict
-# from flask_jwt_extended import create_access_token
-# from flask_jwt_extended import get_jwt_identity
-# from flask_jwt_extended import jwt_required
-# from flask_jwt_extended import JWTManager
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
 
 users = Blueprint('users', 'users')
 
@@ -58,33 +57,33 @@ def logout():
     ), 200
 
 @users.route('/index', methods=['GET'])
-@login_required
+# @login_required
 def users_index():
-    if current_user.is_authenticated:
-        result = models.User.select()
-        user_dicts = [model_to_dict(user) for user in result]
-        return jsonify({
-            'data': user_dicts,
-            'message': f"Successfully found {len(user_dicts)} users",
-            'status': 200
-        }), 200
-    else:
-        return jsonify({
-            'data': {},
-            'message': 'Unauthorized',
-            'status': 401
-        }), 401
-    # result = models.User.select()
-    # print('results of user select query')
-    # print(result)
+    # if current_user.is_authenticated:
+    #     result = models.User.select()
+    #     user_dicts = [model_to_dict(user) for user in result]
+    #     return jsonify({
+    #         'data': user_dicts,
+    #         'message': f"Successfully found {len(user_dicts)} users",
+    #         'status': 200
+    #     }), 200
+    # else:
+    #     return jsonify({
+    #         'data': {},
+    #         'message': 'Unauthorized',
+    #         'status': 401
+    #     }), 401
+    result = models.User.select()
+    print('results of user select query')
+    print(result)
 
-    # user_dicts = [model_to_dict(user) for user in result]
+    user_dicts = [model_to_dict(user) for user in result]
     
-    # return jsonify({
-    #     'data': user_dicts,
-    #     'message': f"Successfully found {len(user_dicts)} users",
-    #     'status': 200
-    # }), 200
+    return jsonify({
+        'data': user_dicts,
+        'message': f"Successfully found {len(user_dicts)} users",
+        'status': 200
+    }), 200
 
 @users.route('/delete/<id>', methods=['DELETE'])
 def delete_user(id):
@@ -97,12 +96,12 @@ def delete_user(id):
         status=200
     ), 200
 
-# @users.route("/token", methods=["POST"])
-# def create_token():
-#     username = request.json.get("username", None)
-#     password = request.json.get("password", None)
-#     if username != "test" or password != "test":
-#         return jsonify({"msg": "Bad username or password"}), 401
+@users.route("/token", methods=["POST"])
+def create_token():
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
+    if username != "test" or password != "test":
+        return jsonify({"msg": "Bad username or password"}), 401
 
-#     access_token = create_access_token(identity=username)
-#     return jsonify(access_token=access_token)
+    access_token = create_access_token(identity=username)
+    return jsonify(access_token=access_token)

@@ -11,7 +11,7 @@ function Home() {
             <h1>Keeb Hoard</h1>
             <br></br>
                 <p>
-                    Welcome to the world of mechanical keyboards, where typing becomes an art form and every keystroke feels like a symphony. Gone are the days of mushy rubber dome keyboards that lack personality and precision. In this blog post, we will dive into the captivating realm of mechanical keyboards and explore why they have become the ultimate choice for keyboard enthusiasts and professionals alike.
+                    Welcome to the world of mechanical keyboards, where typing becomes an art form and every keystroke feels like a symphony. Gone are the days of mushy rubber dome keyboards that lack personality and precision. Dive into the captivating realm of mechanical keyboards and explore why they have become the ultimate choice for keyboard enthusiasts and professionals alike.
                 </p>
                 {showFullContent ? (
                     <>

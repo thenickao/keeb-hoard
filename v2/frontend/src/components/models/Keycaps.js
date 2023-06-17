@@ -33,7 +33,7 @@ function Keycaps() {
       {keycaps.map(keycapItem => (
         <div key={keycapItem.id} className="keycap-item">
           <h3>
-            <a href={`/keycap/${keycapItem.id}`}>{keycapItem.name}</a>
+            <a href={`/keycap/${keycapItem.id}/`}>{keycapItem.name}</a>
           </h3>
         </div>
       ))}
