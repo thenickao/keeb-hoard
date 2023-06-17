@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link} from "react-router-dom"
 
 function Stabilizers() {
   const [stabilizers, setStabilizers] = useState([]);
@@ -24,6 +25,10 @@ function Stabilizers() {
     <div className="stabilizers container">
       <h1>Stabilizers</h1>
       <br></br>
+      <Link to="/stabilizer/create" className="btn btn-primary">
+              Add a Stabilizer
+      </Link>
+      <br></br><br></br>
       {stabilizers.map(stabilizerItem => (
         <div key={stabilizerItem.id} className="stabilizer-item">
           <h3>

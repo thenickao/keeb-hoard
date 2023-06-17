@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link} from "react-router-dom"
 
 function Keycaps() {
   const [keycaps, setKeycaps] = useState([]);
@@ -24,6 +25,10 @@ function Keycaps() {
     <div className="keycaps container">
       <h1>Keycaps</h1>
       <br></br>
+      <Link to="/keycap/create" className="btn btn-primary">
+              Add a Keycap Set
+      </Link>
+      <br></br><br></br>
       {keycaps.map(keycapItem => (
         <div key={keycapItem.id} className="keycap-item">
           <h3>

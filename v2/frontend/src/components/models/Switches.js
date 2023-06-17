@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link} from "react-router-dom"
 
 function Switches() {
   const [switches, setSwitches] = useState([]);
@@ -24,6 +25,10 @@ function Switches() {
     <div className="switches container">
       <h1>Switches</h1>
       <br></br>
+      <Link to="/switch/create" className="btn btn-primary">
+              Add a Switch
+      </Link>
+      <br></br><br></br>
       {switches.map(switchItem => (
         <div key={switchItem.id} className="switch-item">
           <h3>

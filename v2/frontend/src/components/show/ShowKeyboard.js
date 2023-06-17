@@ -57,6 +57,7 @@ function ShowKeyboard() {
             <p>Connectivity: {keyboard.connectivity}</p>
             <p>Backlit: {keyboard.backlit}</p>
             <p>Knob: {keyboard.knob === "true" ? "No" : "Yes"}</p>
+            <br></br>
             <div className="button-group">
               <Link to={`/keyboard/${id}/edit`} className="btn btn-primary">
                 Edit

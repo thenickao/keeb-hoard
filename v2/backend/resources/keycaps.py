@@ -46,7 +46,7 @@ def get_one_keycap(id):
         status=200
     ), 200
 
-@keycaps.route('/edit/<id>', methods=['PUT'])
+@keycaps.route('/<id>', methods=['PUT'])
 def update_keycaps(id):
     payload = request.get_json()
     print(payload)

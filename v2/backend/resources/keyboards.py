@@ -46,7 +46,7 @@ def get_one_keyboard(id):
         status=200
     ), 200
 
-@keyboards.route("/edit/<id>", methods=["PUT"])
+@keyboards.route("/<id>", methods=["PUT"])
 def update_keyboards(id):
     payload = request.get_json()
     print(payload)

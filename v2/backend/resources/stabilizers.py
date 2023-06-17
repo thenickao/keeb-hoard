@@ -46,7 +46,7 @@ def get_one_stabilizer(id):
         status=200
     ), 200
 
-@stabilizers.route('/edit/<id>', methods=['PUT'])
+@stabilizers.route('/<id>', methods=['PUT'])
 def update_stabilizers(id):
     payload = request.get_json()
     print(payload)

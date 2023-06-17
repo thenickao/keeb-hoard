@@ -43,22 +43,22 @@ function App() {
             <Route path="/keyboard/index" element={<Keyboards />} />
             <Route path="/keyboard/:id" element={<ShowKeyboard />} />
             <Route path="/keyboard/create" element={<CreateKeyboard />} />
-            <Route path="/keyboard/edit/:id" element={<EditKeyboard />} />
+            <Route path="/keyboard/:id/edit" element={<EditKeyboard />} />
 
             <Route path="/switch/index" element={<Switches />} />
             <Route path="/switch/:id" element={<ShowSwitch />} />
             <Route path="/switch/create" element={<CreateSwitch />} />
-            <Route path="/switch/edit/:id" element={<EditSwitch />} />
+            <Route path="/switch/:id/edit" element={<EditSwitch />} />
 
             <Route path="/stabilizer/index" element={<Stabilizers />} />
             <Route path="/stabilizer/:id" element={<ShowStabilizer />} />
             <Route path="/stabilizer/create" element={<CreateStabilizer />} />
-            <Route path="/stabilizer/edit/:id" element={<EditStabilizer />} />
+            <Route path="/stabilizer/:id/edit" element={<EditStabilizer />} />
 
             <Route path="/keycap/index" element={<Keycaps />} />
             <Route path="/keycap/:id" element={<ShowKeycap />} />
             <Route path="/keycap/create" element={<CreateKeycap />} />
-            <Route path="/keycap/edit/:id" element={<EditKeycap />} />
+            <Route path="/keycap/:id/edit" element={<EditKeycap />} />
 
             <Route path="/login" element={<LogIn />} />
             <Route path="/register" element={<Register />} />

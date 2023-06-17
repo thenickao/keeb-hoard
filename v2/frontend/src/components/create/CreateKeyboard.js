@@ -65,7 +65,7 @@ function CreateKeyboard() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            style={{ width: "355px" }}
+            style={{ width: "350px" }}
           />
 <br></br><br></br>
           <label htmlFor="size">Size (%):</label>
@@ -76,7 +76,6 @@ function CreateKeyboard() {
             value={size}
             onChange={(e) => setSize(e.target.value)}
             required
-            style={{ width: "330px" }}
           />
 <br></br><br></br>
           <label htmlFor="caseMaterial">Case Material:</label>
@@ -97,7 +96,6 @@ function CreateKeyboard() {
             value={connectivity}
             onChange={(e) => setConnectivity(e.target.value)}
             required
-            style={{ width: "280px" }}
           />
 <br></br><br></br>
           <label htmlFor="backlit">Backlit:</label>
@@ -108,7 +106,6 @@ function CreateKeyboard() {
             value={backlit}
             onChange={(e) => setBacklit(e.target.value)}
             required
-            style={{ width: "340px" }}
           />
 <br></br><br></br>
           <label htmlFor="knob">Knob:</label>
@@ -120,7 +117,7 @@ function CreateKeyboard() {
           />
             <br></br><br></br>
           <button type="submit" className="btn btn-primary">
-            Add this Keyboard to the Hoard
+            Send this Keyboard to the Hoard
           </button>
         </form>
       )}
