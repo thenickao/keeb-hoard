@@ -53,22 +53,6 @@ function EditKeycap() {
       });
   };
 
-  const handleDelete = () => {
-    fetch(`http://localhost:8000/keycap/${id}`, {
-      method: "DELETE",
-      mode: "cors",
-      headers: {
-        origin: "http://localhost:3000",
-      },
-    })
-      .then((response) => {
-        navigate("/keycap/index");
-      })
-      .catch((error) => {
-        console.error("Error deleting keycap:", error);
-      });
-  };
-
   if (!keycap) {
     return <div className="loading">Loading...</div>;
   }

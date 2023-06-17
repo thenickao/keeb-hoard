@@ -53,22 +53,6 @@ function EditKeyboard() {
       });
   };
 
-  const handleDelete = () => {
-    fetch(`http://localhost:8000/keyboard/${id}`, {
-      method: "DELETE",
-      mode: "cors",
-      headers: {
-        origin: "http://localhost:3000",
-      },
-    })
-      .then((response) => {
-        navigate("/keyboard/index");
-      })
-      .catch((error) => {
-        console.error("Error deleting keyboard:", error);
-      });
-  };
-
   if (!keyboard) {
     return <div className="loading">Loading...</div>;
   }

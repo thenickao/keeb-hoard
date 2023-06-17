@@ -53,22 +53,6 @@ function EditSwitch() {
       });
   };
 
-  const handleDelete = () => {
-    fetch(`http://localhost:8000/switch/${id}`, {
-      method: "DELETE",
-      mode: "cors",
-      headers: {
-        origin: "http://localhost:3000",
-      },
-    })
-      .then((response) => {
-        navigate("/switch/index");
-      })
-      .catch((error) => {
-        console.error("Error deleting switch:", error);
-      });
-  };
-
   if (!kSwitch) {
     return <div className="loading">Loading...</div>;
   }

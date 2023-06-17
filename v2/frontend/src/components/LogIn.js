@@ -10,8 +10,8 @@ function LogIn() {
     const navigate = useNavigate()
 
     const logIn = () => {
-        console.log(username)
-        console.log(password)
+        // console.log(username)
+        // console.log(password)
 
         setUsername("")
         setPassword("")

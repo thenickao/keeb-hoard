@@ -53,22 +53,6 @@ function EditStabilizer() {
       });
   };
 
-  const handleDelete = () => {
-    fetch(`http://localhost:8000/stabilizer/${id}`, {
-      method: "DELETE",
-      mode: "cors",
-      headers: {
-        origin: "http://localhost:3000",
-      },
-    })
-      .then((response) => {
-        navigate("/stabilizer/index");
-      })
-      .catch((error) => {
-        console.error("Error deleting stabilizer:", error);
-      });
-  };
-
   if (!stabilizer) {
     return <div className="loading">Loading...</div>;
   }

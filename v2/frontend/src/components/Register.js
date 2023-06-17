@@ -1,5 +1,6 @@
-import React, {useState} from "react"
-import {Form, Button, Alert} from "react-bootstrap"
+import React from "react"
+// import React, {useState} from "react"
+import {Form, Button} from "react-bootstrap"
 import {Link, useNavigate} from "react-router-dom"
 import {useForm} from "react-hook-form"
 import '../styles/main.css'
@@ -10,8 +11,8 @@ function Register() {
     // const [password, setPassword] = useState("")
     // const [confirmPassword, setConfirmPassword] = useState("")
 
-    const {register, watch, handleSubmit, getValues, reset, formState:{errors}} = useForm()
-    const [show,setShow] = useState(true)
+    const {register, handleSubmit, getValues, reset, formState:{errors}} = useForm()
+    // const [show,setShow] = useState(true)
 
     const navigate = useNavigate()
 
@@ -45,10 +46,10 @@ function Register() {
                 body:JSON.stringify(body)
             }
 
-            fetch("http://localhost:8000/register/register", requestOptions)
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
+            fetch("http://localhost:8000/user/register", requestOptions)
+                .then(res => res.json())
+                .then(data => console.log(data))
+                .catch(err => console.log(err))
 
             reset()
 

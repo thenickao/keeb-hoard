@@ -11,13 +11,18 @@ from resources.keycaps import keycap
 import models
 from flask_cors import CORS
 from flask_login import LoginManager
-# from flask_jwt_extended import JWTManager
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
 
 login_manager = LoginManager()
 
 DEBUG=True
 PORT=8000
 app = Flask(__name__)
+app.config["JWT_SECRET_KEY"] = "WE423098RUIYE6548793RWJHKGFDJK354987GFDJKHFGD"
+jwt = JWTManager(app)
 app.config['CORS_SUPPORTS_CREDENTIALS'] = True
 cors = CORS(app, origins=['http://localhost:3000'], supports_credentials=True)
 
@@ -48,7 +53,7 @@ def after_request(response):
 @app.after_request
 def add_cors_headers(response):
     response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
-    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     return response
     

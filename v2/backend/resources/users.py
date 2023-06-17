@@ -3,7 +3,10 @@ from flask import request, jsonify, Blueprint
 from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user
 from playhouse.shortcuts import model_to_dict
-
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
 
 users = Blueprint('users', 'users')
 
@@ -69,7 +72,7 @@ def users_index():
         'status': 200
     }), 200
 
-@users.route('/delete/<id>',  methods=['DELETE'])
+@users.route('/delete/<id>', methods=['DELETE'])
 def delete_user(id):
     delete_query = models.User.delete().where(models.User.id == id)
     nums_of_rows_deleted = delete_query.execute()
@@ -79,3 +82,13 @@ def delete_user(id):
         message=f"Successfully deleted {nums_of_rows_deleted} user with id {id}",
         status=200
     ), 200
+
+@users.route("/token", methods=["POST"])
+def create_token():
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
+    if username != "test" or password != "test":
+        return jsonify({"msg": "Bad username or password"}), 401
+
+    access_token = create_access_token(identity=username)
+    return jsonify(access_token=access_token)

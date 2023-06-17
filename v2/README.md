@@ -21,6 +21,10 @@ Dependencies Used:
 _
 
 User Story:
+- Unregistered users will be able to view information but will not be given permission to add, update, delete, or favorite/save any objects
+- Unregistered users will be able to sign-up
+- Users can sign-in if there is an existing account
+- This will allow all users to have access to the information, but will allow registered users to participate in information sharing and integrity
 - User lands on an welcome/information page
 - There is a navbar with links/buttons for the user to click on to log-in, register, or view the entries in the database
 - When viewing the index of an object, the user may create a new entry or view an existing one
@@ -38,6 +42,9 @@ Font: https://www.dafont.com/coolvetica.font
 _
 
 Forthcoming Features:
+- A configurator for users to ensure compatibility between components and save their keyboard builds
+- User profiles with customizability such as building/configurating keyboards 
+- Make user profiles public or private
 - Additional components
 - Additional features/specifications for new and existing components
 - In depth Information Pages for each component
