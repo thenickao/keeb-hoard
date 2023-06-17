@@ -78,6 +78,7 @@ def initialize():
 #     conn.execute('DROP TABLE IF EXISTS keyboard')
 #     conn.execute('DROP TABLE IF EXISTS switch')
 #     conn.execute('DROP TABLE IF EXISTS stabilizer')
+#     conn.execute('DROP TABLE IF EXISTS keycap')
 #     # conn.execute('DROP TABLE IF EXISTS build')
 #     conn.commit()
 #     conn.close()

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-function ShowKeyboard() {
-    const [keyboardId, setKeyboardId] = useState(id)
-    const [keyboard, setKeyboard] = useState([]);
+function ShowKeyboard({id}) {
+    const [keyboard, setKeyboard] = useState();
   
     useEffect(() => {
-      fetch(`http://localhost:8000/keyboard/${keyboardId}`, {
+      console.log(id)
+
+      fetch(`http://localhost:8000/keyboard/${id}`, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -14,13 +15,15 @@ function ShowKeyboard() {
       })
         .then(response => response.json())
         .then(data => {
-          setKeyboard(data.data);
+          setKeyboard(data);
         })
         .catch(error => {
           console.error("Error fetching keyboard:", error);
         });
-    }, [keyboardId]);
-  
+    }, [id]);
+    if (!keyboard) {
+      return <div className="loading">Loading . . .</div>;
+    }
     return (
         <div className="keyboard container">
             <h1>{keyboard.name}</h1>

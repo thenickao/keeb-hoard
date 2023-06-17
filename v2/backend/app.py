@@ -3,8 +3,11 @@ from resources.users import users
 from resources.keyboards import keyboards
 from resources.keyboards import keyboard
 from resources.switches import switches
+from resources.switches import switch
 from resources.stabilizers import stabilizers
+from resources.stabilizers import stabilizer
 from resources.keycaps import keycaps
+from resources.keycaps import keycap
 import models
 from flask_cors import CORS
 from flask_login import LoginManager
@@ -48,8 +51,8 @@ app.register_blueprint(users, url_prefix="/user")
 CORS(keyboards, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(keyboards, url_prefix="/keyboard")
 
-CORS(keyboard, origins=["http://localhost:3000"], supports_credentials=True)
-app.register_blueprint(keyboard, url_prefix="/keyboard")
+# CORS(keyboard, origins=["http://localhost:3000"], supports_credentials=True)
+# app.register_blueprint(keyboard, url_prefix="/keyboard")
 
 CORS(switches, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(switches, url_prefix="/switch")

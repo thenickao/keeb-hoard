@@ -2,8 +2,10 @@ import models
 from flask import Blueprint, request, jsonify
 from playhouse.shortcuts import model_to_dict
 # from flask_login import login_required
+from flask_cors import CORS
 
 switches = Blueprint('switches', 'switches')
+switch = Blueprint('switch', 'switch')
 
 @switches.route('/index', methods=['GET'])
 # @login_required

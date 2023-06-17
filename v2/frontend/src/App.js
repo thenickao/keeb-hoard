@@ -15,9 +15,9 @@ import Stabilizers from "./components/Stabilizers"
 import Keycaps from "./components/Keycaps"
 
 import ShowKeyboard from "./components/ShowKeyboard"
-import ShowSwitches from "./components/ShowSwitches"
-import ShowStabilizers from "./components/ShowStabilizers"
-import ShowKeycaps from "./components/ShowKeycaps"
+import ShowSwitch from "./components/ShowSwitch"
+import ShowStabilizer from "./components/ShowStabilizer"
+import ShowKeycap from "./components/ShowKeycap"
 
 import LogIn from "./components/LogIn"
 import Register from "./components/Register"
@@ -46,11 +46,11 @@ function App() {
             <Route path="/keyboard/:id" element={<ShowKeyboard />} />
             <Route path="/components" element={<Components />} />
             <Route path="/switches" element={<Switches />} />
-            <Route path="/switches/:id" element={<ShowSwitches />} />
+            <Route path="/switch/:id" element={<ShowSwitch />} />
             <Route path="/stabilizers" element={<Stabilizers />} />
-            <Route path="/stabilizers/:id" element={<ShowStabilizers />} />
+            <Route path="/stabilizer/:id" element={<ShowStabilizer />} />
             <Route path="/keycaps" element={<Keycaps />} />
-            <Route path="/keycaps/:id" element={<ShowKeycaps />} />
+            <Route path="/keycap/:id" element={<ShowKeycap />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/register" element={<Register />} />
           </Routes>

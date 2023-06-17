@@ -4,13 +4,6 @@ function Keyboards() {
   const [keyboards, setKeyboards] = useState([]);
 
   useEffect(() => {
-        // fetch("/api/v1/keyboards")
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         setKeyboards(data)
-        //         console.log(data)
-        //     })
-        //     .catch(err => console.log(err))
     
     fetch('http://localhost:8000/keyboard/index', {
       method: 'GET',
@@ -29,22 +22,6 @@ function Keyboards() {
   }, []);
 
   return (
-// { {keyboards.map((keyboard) => (
-//               <ShowKeyboards
-//                 key={keyboard.id} // Add a unique key prop for each rendered component
-//                 name={keyboard.name}
-//                 size={keyboard.size}
-//                 case_material={keyboard.case_material}
-//                 connectivity={keyboard.connectivity}
-//                 backlit={keyboard.backlit}
-//                 knob={keyboard.knob}
-//               />
-//             ))} }
-//             {keyboards.length > 0 ? (
-//               <ShowKeyboards keyboard={keyboards[0]} />
-//             ) : (
-//               <p>No keyboards found</p>
-//             )}
     <div className="keyboards container">
       <h1>Keyboards</h1>
       <br></br>
@@ -60,3 +37,28 @@ function Keyboards() {
 }
 
 export default Keyboards;
+
+        // fetch("/api/v1/keyboards")
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         setKeyboards(data)
+        //         console.log(data)
+        //     })
+        //     .catch(err => console.log(err))
+
+        // { {keyboards.map((keyboard) => (
+//               <ShowKeyboards
+//                 key={keyboard.id} // Add a unique key prop for each rendered component
+//                 name={keyboard.name}
+//                 size={keyboard.size}
+//                 case_material={keyboard.case_material}
+//                 connectivity={keyboard.connectivity}
+//                 backlit={keyboard.backlit}
+//                 knob={keyboard.knob}
+//               />
+//             ))} }
+//             {keyboards.length > 0 ? (
+//               <ShowKeyboards keyboard={keyboards[0]} />
+//             ) : (
+//               <p>No keyboards found</p>
+//             )}
