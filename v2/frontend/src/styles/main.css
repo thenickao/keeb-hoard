@@ -126,6 +126,10 @@
     color:#303030;
     background-color: rgb(220, 220, 220);
 }
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
 
 /* Switch */
 .switch-item a {

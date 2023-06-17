@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams} from "react-router-dom"
+import { Link, useParams, useNavigate} from "react-router-dom"
 
 function ShowKeyboard() {
   const { id } = useParams()  
   const [keyboard, setKeyboard] = useState();
+  const navigate = useNavigate();
+
     
     useEffect(() => {
       fetch(`http://localhost:8000/keyboard/${id}`, {
@@ -21,6 +23,24 @@ function ShowKeyboard() {
           console.error("Error fetching keyboard:", error);
         });
     }, [id]);
+
+    const handleDelete = () => {
+      fetch(`http://localhost:8000/keyboard/${id}`, {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "origin": "http://localhost:3000"
+        }
+      })
+        .then(response => {
+          navigate("/keyboard/index");
+
+        })
+        .catch(error => {
+          console.error("Error deleting keyboard:", error);
+        });
+    };
+
     if (!keyboard) {
       return <div className="loading">Loading . . .</div>;
     }
@@ -37,6 +57,14 @@ function ShowKeyboard() {
             <p>Connectivity: {keyboard.connectivity}</p>
             <p>Backlit: {keyboard.backlit}</p>
             <p>Knob: {keyboard.knob === "true" ? "No" : "Yes"}</p>
+            <div className="button-group">
+              <Link to={`/keyboard/${id}/edit`} className="btn btn-primary">
+                Edit
+              </Link>
+              <button className="btn btn-danger delete-button" onClick={handleDelete}>
+                Delete
+              </button>
+            </div>
         </div>
     )
 }

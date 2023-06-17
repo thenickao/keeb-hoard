@@ -19,7 +19,7 @@ DEBUG=True
 PORT=8000
 app = Flask(__name__)
 app.config['CORS_SUPPORTS_CREDENTIALS'] = True
-CORS(app, origins=['http://localhost:3000'], methods=['GET', 'POST', 'PUT', 'DELETE'], allow_headers=['Content-Type'])
+cors = CORS(app, origins=['http://localhost:3000'], supports_credentials=True)
 
 app.secret_key = "LJAKLJLKJJLJKLSDJLKJASD"
 login_manager.init_app(app)
@@ -47,27 +47,15 @@ def after_request(response):
 
 @app.after_request
 def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
     response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE'
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     return response
     
-CORS(users, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(users, url_prefix="/user")
-
-CORS(keyboards, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(keyboards, url_prefix="/keyboard")
-
-# CORS(keyboard, origins=["http://localhost:3000"], supports_credentials=True)
-# app.register_blueprint(keyboard, url_prefix="/keyboard")
-
-CORS(switches, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(switches, url_prefix="/switch")
-
-CORS(stabilizers, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(stabilizers, url_prefix="/stabilizer")
-
-CORS(keycaps, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(keycaps, url_prefix="/keycap")
 
 
