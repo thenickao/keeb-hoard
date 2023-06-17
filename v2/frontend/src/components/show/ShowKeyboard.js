@@ -27,7 +27,7 @@ function ShowKeyboard() {
     return (
         <div className="keyboard container">
             <Link to="/keyboard/index" className="btn btn-primary">
-              Back to Keyboards
+              Back to All Keyboards
             </Link>
             <br></br><br></br>
             <h1>{keyboard.name}</h1>

@@ -18,7 +18,8 @@ login_manager = LoginManager()
 DEBUG=True
 PORT=8000
 app = Flask(__name__)
-CORS(app)
+app.config['CORS_SUPPORTS_CREDENTIALS'] = True
+CORS(app, origins=['http://localhost:3000'], methods=['GET', 'POST', 'PUT', 'DELETE'], allow_headers=['Content-Type'])
 
 app.secret_key = "LJAKLJLKJJLJKLSDJLKJASD"
 login_manager.init_app(app)
@@ -70,6 +71,16 @@ CORS(keycaps, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(keycaps, url_prefix="/keycap")
 
 
+
+if __name__ == "__main__":
+    models.initialize()
+    app.run(debug=DEBUG, port=PORT)
+
+# if __name__ == "__main__":
+#     models.delete_tables()
+#     app.run(debug=DEBUG, port=PORT)
+
+
 # @app.route("/")
 # def home():
 #     return jsonify("Hello, this is home.")
@@ -86,12 +97,3 @@ app.register_blueprint(keycaps, url_prefix="/keycap")
 # def keyboard(keyboard):
 #     data = {"message": f"This is {keyboard}"}
 #     return jsonify(data)
-
-
-if __name__ == "__main__":
-    models.initialize()
-    app.run(debug=DEBUG, port=PORT)
-
-# if __name__ == "__main__":
-#     models.delete_tables()
-#     app.run(debug=DEBUG, port=PORT)
