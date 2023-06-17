@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 function CreateKeyboard() {
   const [name, setName] = useState("");
@@ -9,7 +9,9 @@ function CreateKeyboard() {
   const [backlit, setBacklit] = useState("");
   const [knob, setKnob] = useState(false);
   const [loading, setLoading] = useState(false);
-    
+
+  const navigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -38,6 +40,7 @@ function CreateKeyboard() {
         console.error("Error creating keyboard:", error);
         setLoading(false);
       });
+      navigate("/keyboard/index")
   };
    
   return (
@@ -113,7 +116,7 @@ function CreateKeyboard() {
             onChange={(e) => setKnob(e.target.checked)}
           />
             <br></br><br></br> */}
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
             Send this Keyboard to the Hoard
           </button>
         </form>
