@@ -11,20 +11,22 @@ from resources.keycaps import keycap
 import models
 from flask_cors import CORS
 from flask_login import LoginManager
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
-from flask_jwt_extended import JWTManager
+from flask_login import current_user
+# from flask_jwt_extended import create_access_token
+# from flask_jwt_extended import get_jwt_identity
+# from flask_jwt_extended import jwt_required
+# from flask_jwt_extended import JWTManager
 
 login_manager = LoginManager()
 
 DEBUG=True
 PORT=8000
 app = Flask(__name__)
-app.config["JWT_SECRET_KEY"] = "WE423098RUIYE6548793RWJHKGFDJK354987GFDJKHFGD"
-jwt = JWTManager(app)
+# app.config["JWT_SECRET_KEY"] = "WE423098RUIYE6548793RWJHKGFDJK354987GFDJKHFGD"
+# jwt = JWTManager(app)
 app.config['CORS_SUPPORTS_CREDENTIALS'] = True
 cors = CORS(app, origins=['http://localhost:3000'], supports_credentials=True)
+cors = CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 app.secret_key = "LJAKLJLKJJLJKLSDJLKJASD"
 login_manager.init_app(app)
@@ -44,6 +46,7 @@ def load_user(user_id):
 def before_request():
     g.db = models.DATABASE
     g.db.connect()
+    g.user = current_user
 
 @app.after_request
 def after_request(response):

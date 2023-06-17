@@ -14,7 +14,8 @@ function Switches() {
     })
       .then(response => response.json())
       .then(data => {
-        setSwitches(data.data);
+        const sortedSwitches = data.data.sort((a, b) => a.name.localeCompare(b.name));
+        setSwitches(sortedSwitches);
       })
       .catch(error => {
         console.error('Error fetching switches:', error);

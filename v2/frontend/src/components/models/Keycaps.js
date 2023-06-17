@@ -14,7 +14,8 @@ function Keycaps() {
     })
       .then(response => response.json())
       .then(data => {
-        setKeycaps(data.data);
+        const sortedKeycaps = data.data.sort((a, b) => a.name.localeCompare(b.name));
+        setKeycaps(sortedKeycaps);
       })
       .catch(error => {
         console.error('Error fetching keycaps:', error);

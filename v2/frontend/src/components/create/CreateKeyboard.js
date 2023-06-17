@@ -14,7 +14,6 @@ function CreateKeyboard() {
     e.preventDefault();
     setLoading(true);
 
-    // Create keyboard API call
     fetch("http://localhost:8000/keyboard", {
       method: "POST",
       mode: "cors",
@@ -108,14 +107,14 @@ function CreateKeyboard() {
             required
           />
 <br></br><br></br>
-          <label htmlFor="knob">Knob:</label>
+          {/* <label htmlFor="knob">Knob:</label>
           <input
             type="checkbox"
             id="knob"
             checked={knob}
             onChange={(e) => setKnob(e.target.checked)}
           />
-            <br></br><br></br>
+            <br></br><br></br> */}
           <button type="submit" className="btn btn-primary">
             Send this Keyboard to the Hoard
           </button>

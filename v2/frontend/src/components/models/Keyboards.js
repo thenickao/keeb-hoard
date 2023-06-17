@@ -16,7 +16,8 @@ function Keyboards() {
     })
       .then(response => response.json())
       .then(data => {
-        setKeyboards(data.data);
+        const sortedKeyboards = data.data.sort((a, b) => a.name.localeCompare(b.name));
+        setKeyboards(sortedKeyboards);
       })
       .catch(error => {
         console.error('Error fetching keyboards:', error);

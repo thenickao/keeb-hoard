@@ -14,7 +14,8 @@ function Stabilizers() {
     })
       .then(response => response.json())
       .then(data => {
-        setStabilizers(data.data);
+        const sortedStabilizers = data.data.sort((a, b) => a.name.localeCompare(b.name));
+        setStabilizers(sortedStabilizers);
       })
       .catch(error => {
         console.error('Error fetching stabilizers:', error);

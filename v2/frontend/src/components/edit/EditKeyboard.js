@@ -125,7 +125,7 @@ function EditKeyboard() {
             required
           />
         </div>
-        <br></br>
+        {/* <br></br>
         <div className="form-group">
           <label htmlFor="knob">Knob:</label>
           <input
@@ -136,7 +136,7 @@ function EditKeyboard() {
             onChange={handleInputChange}
             required
           />
-        </div>
+        </div> */}
         <br></br><br></br>
         <div className="button-group">
           <button type="submit" className="btn btn-primary">
