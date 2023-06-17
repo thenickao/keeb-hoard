@@ -66,9 +66,9 @@ function Header() {
 								<li><Link className="dropdown-item" to="/keycap/index">Keycaps</Link></li>
 							</ul>
 						</li>
-						{/* <li className="nav-item">
-							<Link className="nav-link active" to="/">Log Out</Link>
-						</li> */}
+						<li className="nav-item">
+							<Link className="nav-link active" to="/user/logout">Log Out</Link>
+						</li>
 					</ul>
 				</div>
 			</div>
